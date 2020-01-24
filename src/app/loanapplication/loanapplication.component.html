@@ -1,0 +1,46 @@
+
+<div id="masterContainerId" [formGroup]="formGroup">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{loanApplicationKey | uppercase}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+      <div id="containerId" [formGroupName]="loanApplicationKey">
+      <div *ngFor="let item of loanApplicationDetails | keyvalue: originalOrder">
+          <div [ngSwitch] = "item.value.type">
+            <div *ngSwitchCase="'text'" class="item">
+              <mat-form-field >
+                <input [ngClass]="{'ng-touched':touched}" matInput #input [id]="item.key" [formControlName] = "item.key" type="text" [placeholder]="item.key">
+              </mat-form-field>
+          </div>
+          <div *ngSwitchCase="'email'" class="item" >
+            <mat-form-field>
+              <input matInput #input [id]="item.key" [formControlName] = "item.key" type="email" [placeholder]="item.key">
+            </mat-form-field>
+          </div>
+            <div *ngSwitchCase="'radio'" class="item">
+            <mat-radio-group  [formControlName] = "item.key">
+              <mat-radio-button #radio [id]="item.key">{{item.key}}</mat-radio-button>
+              <mat-radio-button #radio [id]="item.key">adhar card</mat-radio-button>
+            </mat-radio-group>
+          </div>
+            <div  *ngSwitchCase="'button'" class="item">
+            <button #button [id]="item.key" mat-raised-button (click)="this[item.key]()">{{item.key}}</button>
+          </div>
+            <div *ngSwitchCase="'date'" class="item">
+            <mat-form-field>
+                <input #input [id]="item.key" matInput readonly [matDatepicker]="picker" [placeholder]="item.key" [formControlName]="item.key">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div *ngSwitchCase="'checkbox'" class="item">
+            <mat-checkbox  #checkbox [id]="item.key" [formControlName] = "item.key">{{item.key}}</mat-checkbox>
+          </div>
+          </div>
+    </div>
+  </div>
+</mat-card-content>
+</mat-card>
+  </div>
+
