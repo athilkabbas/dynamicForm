@@ -21,7 +21,6 @@
             <div *ngSwitchCase="'radio'" class="item">
             <mat-radio-group  [formControlName] = "item.key">
               <mat-radio-button #radio [id]="item.key">{{item.key}}</mat-radio-button>
-              <mat-radio-button #radio [id]="item.key">adhar card</mat-radio-button>
             </mat-radio-group>
           </div>
             <div  *ngSwitchCase="'button'" class="item">

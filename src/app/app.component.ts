@@ -10,7 +10,6 @@ import { Routes, Router } from '@angular/router';
 })
 export class AppComponent  {
   index: number = -1;
-  loanApplicationComponentArray: any = [];
   loanApplicationArray: any = [];
   loanApplicationList: any = {
     "loanapplicationForm1": {
@@ -182,9 +181,6 @@ export class AppComponent  {
     this.componentRef.instance.loanApplicationKey = this.loanApplicationArray[this.index]["key"];
     this.componentRef.instance.loanApplicationComponent = this.pageInstances[this.pages[this.index]]
     this.pageInstances[this.pages[this.index]] = this.componentRef.instance;
-    this.loanApplicationComponentArray.push(this.componentRef.instance);
-    console.log("forward--> ",this.pageInstances)
-    console.log(this.index);
     
   }
   createPreviousLoanApplicationForm(){
@@ -194,11 +190,7 @@ export class AppComponent  {
     this.componentRef = this.container.createComponent(factory);
     this.componentRef.instance.loanApplicationDetails = this.loanApplicationArray[this.index]["value"];
     this.componentRef.instance.loanApplicationKey = this.loanApplicationArray[this.index]["key"];
-    // this.componentRef.instance.loanApplicationComponent = this.loanApplicationComponentArray[this.index];
     this.componentRef.instance.loanApplicationComponent = this.pageInstances[this.pages[this.index]]
-    console.log("backward--> ",this.pageInstances)
-    console.log(this.index);
-
   }   
 
 

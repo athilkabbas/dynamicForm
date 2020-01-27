@@ -9,7 +9,7 @@ import { MatCheckbox, MatRadioButton } from '@angular/material';
   templateUrl: './loanapplication.component.html',
   styleUrls: ['./loanapplication.component.css']
 })
-export class LoanapplicationComponent implements OnInit,AfterViewInit {
+export class LoanapplicationComponent implements OnInit {
   @Input() loanApplicationDetails: Object = {};
   @Input() loanApplicationKey: string = "";
   @ViewChildren('input') inputs;
